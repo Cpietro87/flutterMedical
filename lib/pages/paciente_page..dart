@@ -1,0 +1,148 @@
+import 'dart:convert';
+
+// import 'package:doctor/models/paciente.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+class Paciente extends StatefulWidget {
+  const Paciente({super.key});
+
+  @override
+  State<Paciente> createState() => _PacienteState();
+}
+
+
+
+class _PacienteState extends State<Paciente> {
+  final nombre = TextEditingController();
+  final email = TextEditingController();
+  final telefono = TextEditingController();
+  final doctorId = TextEditingController();
+  final obrasocial = TextEditingController();
+
+  final url = Uri.parse("http://localhost:3000/paciente/create");
+
+final headers = {"Content-Type": "application/json;charset=UTF-8"};
+  @override
+   Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              Text(
+                "Paciente",
+                style: TextStyle(
+                    fontSize: 50, color: Theme.of(context).primaryColor),
+              ),
+              const Text(
+                "Registro",
+                style: TextStyle(fontSize: 20, color: Colors.grey),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.10,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                child: TextField(
+                  controller: nombre,
+                  decoration: const InputDecoration(
+                      hintText: "Nombre", border: InputBorder.none),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  controller: email,
+                  decoration: const InputDecoration(
+                      hintText: "Email", border: InputBorder.none),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  controller: telefono,
+                  decoration: const InputDecoration(
+                      hintText: "Telefono", border: InputBorder.none),
+                ),
+              ),
+             Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  controller: doctorId,
+                  decoration: const InputDecoration(
+                      hintText: "Doctor", border: InputBorder.none),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)),
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  controller: obrasocial,
+                  decoration: const InputDecoration(
+                      hintText: "Obra Social", border: InputBorder.none),
+                ),
+              ),
+              ElevatedButton(
+                  onPressed: register, child: const Text("Enviar")),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+  Future<void> register() async {
+
+    final paciente = {
+      "nombre": nombre.text,
+      "email": email.text,
+      "telefono": telefono.text,
+      "doctorId": doctorId.text,
+      "obrasocial": obrasocial.text
+    };
+    final res = await http.post(url, headers: headers, body: jsonEncode(paciente));
+
+    if (res.statusCode == 401) {
+      final data = Map.from((jsonDecode(res.body)));
+      showSnackBar(data["error"]);
+      return;
+    }
+
+    if (res.statusCode != 200) {
+      showSnackBar("Ups hubo un error, intente de nuevo");
+      return;
+    }
+  
+  }
+
+  void showSnackBar(String msg) {
+    final snack = SnackBar(content: Text(msg));
+    ScaffoldMessenger.of(context).showSnackBar(snack);
+  }
+}
