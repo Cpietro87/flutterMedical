@@ -1,19 +1,18 @@
 import 'dart:convert';
 
-// import 'package:doctor/models/paciente.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class Paciente extends StatefulWidget {
-  const Paciente({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<Paciente> createState() => _PacienteState();
+  State<Register> createState() => _RegisterState();
 }
 
 
 
-class _PacienteState extends State<Paciente> {
+class _RegisterState extends State<Register> {
   final nombre = TextEditingController();
   final email = TextEditingController();
   final telefono = TextEditingController();
@@ -34,7 +33,7 @@ final headers = {"Content-Type": "application/json;charset=UTF-8"};
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
               Text(
-                "Paciente",
+                "Usuario",
                 style: TextStyle(
                     fontSize: 50, color: Theme.of(context).primaryColor),
               ),
@@ -96,21 +95,12 @@ final headers = {"Content-Type": "application/json;charset=UTF-8"};
                       hintText: "Doctor", border: InputBorder.none),
                 ),
               ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  controller: obrasocial,
-                  decoration: const InputDecoration(
-                      hintText: "Obra Social", border: InputBorder.none),
-                ),
-              ),
+              
               ElevatedButton(
-                  onPressed: register, child: const Text("Enviar")),
+                 onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
+              child: const Text("Enviar"))
             ],
           ),
         ),
@@ -119,14 +109,14 @@ final headers = {"Content-Type": "application/json;charset=UTF-8"};
   }
   Future<void> register() async {
 
-    final paciente = {
+    final usuarios = {
       "nombre": nombre.text,
       "email": email.text,
       "telefono": telefono.text,
       "doctorId": doctorId.text,
       "obrasocial": obrasocial.text
     };
-    final res = await http.post(url, headers: headers, body: jsonEncode(paciente));
+    final res = await http.post(url, headers: headers, body: jsonEncode(usuarios));
 
     if (res.statusCode == 401) {
       final data = Map.from((jsonDecode(res.body)));

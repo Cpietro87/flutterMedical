@@ -18,34 +18,36 @@ class _LoginPageState extends State<LoginPage> {
   //texfields
 
   //http
-  final url = Uri.parse("http://localhost:3000/paciente");
+  final url = Uri.parse("http://localhost:3000/paciente/index");
   final headers = {"Content-Type": "application/json;charset=UTF-8"};
   //http
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            "Usuario",
-            style:
-                TextStyle(fontSize: 50, color: Theme.of(context).primaryColor),
-          ),
-          const Text(
-            "Inicio de session",
-            style: TextStyle(fontSize: 20, color: Colors.grey),
-          ),
+          
+            Image.asset('images/iconoHistomed.jpg', 
+              width: 700.0,
+              height: 350.0,),
           Container(
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(10)),
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
             child: TextField(
-              controller: nombre,
-              decoration: const InputDecoration(
-                  hintText: "Nombre", border: InputBorder.none),
-            ),
+                controller: nombre,
+                enableInteractiveSelection: false,
+                decoration: InputDecoration(
+                    hintText: 'Nombre',
+                    labelText: 'Nombre',
+                    prefixIcon: const Icon(Icons.supervised_user_circle),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0))),
+                        
+              ),
           ),
            Container(
             decoration: BoxDecoration(
@@ -53,22 +55,36 @@ class _LoginPageState extends State<LoginPage> {
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
             child: TextField(
-              controller: email,
-              decoration: const InputDecoration(
-                  hintText: "Email", border: InputBorder.none),
-            ),
+                controller: email,
+                enableInteractiveSelection: false,
+                decoration: InputDecoration(
+                    hintText: 'Email',
+                    labelText: 'Email',
+                    prefixIcon: const Icon(Icons.supervised_user_circle),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20.0))),
+                        
+              ),
           ),
           ElevatedButton(
-            onPressed: login,
+            onPressed: () {
+                Navigator.pushNamed(context, '/home');
+            },
+            
+             style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0))),
             child: const Text("Entrar"),
-          ),
+                ),
           TextButton(
               onPressed: () {
-                Navigator.of(context).pushNamed("paciente");
+                Navigator.pushNamed(context, '/register');
               },
               child: const Text("Crear cuenta"))
         ],
+        
       ),
+      
     );
   }
 
@@ -83,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
           "${email.text.isEmpty ? "-Email " : ""} ${nombre.text.isEmpty ? "-Nombre" : ""} requerido");
       return;
     }
-    final user = {"email": email.text, "clave": nombre.text};
+    final user = {"email": email.text, "Nombre": nombre.text};
     final res = await http.post(url, headers: headers, body: jsonEncode(user));
     final data = Map.from(jsonDecode(res.body));
     if (res.statusCode == 400) {

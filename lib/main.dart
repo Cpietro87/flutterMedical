@@ -1,5 +1,12 @@
-import 'package:doctor/pages/login_page.dart';
-import 'package:doctor/pages/paciente_page..dart';
+import 'package:doctor/pages/Consultas/consulta_page.dart';
+import 'package:doctor/pages/Doctor/doctor_page.dart';
+import 'package:doctor/pages/Home/home_page.dart';
+import 'package:doctor/pages/Login/login_page.dart';
+import 'package:doctor/pages/Login/register_page.dart';
+import 'package:doctor/pages/Paciente/paciente_list.dart';
+import 'package:doctor/pages/Paciente/paciente_page.dart';
+import 'package:doctor/pages/Paciente/prescripcion.dart';
+import 'package:doctor/pages/usuarios_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -14,18 +21,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'App Medical',
+      debugShowCheckedModeBanner: false,
+      title: 'HistoMed',
       theme: ThemeData(
        
         primarySwatch: Colors.blue,
       ),
-       initialRoute: 
-      "paciente",
-      routes: {
-        "paciente": (context) => const Paciente(),
-        "login": (context) => const LoginPage(),
-      },
+       initialRoute: '/',
+       routes: routes,
     );
   }
 }
 
+Map<String, WidgetBuilder> routes = {
+  '/': (context) => const LoginPage(),
+  '/home':(context) => const MyHomePage(),
+  '/register': ((context) => const Register()),
+  '/doctor': ((context) => const ProfileDoctor(name: 'Pepe', patients: ['Argento', 'Pietro'], profession: 'Dentista', email: 'pepe@yahoo.com', phone: '1234', photoUrl: 'assets/images/medico.jpg',)),
+  '/pacientes/list': ((context) => const UserList()),
+  '/paciente': ((context) => const StepsFormHM()),
+  '/usuario': (context) => const Usuarios(),
+  '/prescripcion':(context) => Prescription(),
+  '/consulta': (context) => const Vista()
+};
