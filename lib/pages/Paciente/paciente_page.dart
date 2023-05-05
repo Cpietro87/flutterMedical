@@ -54,7 +54,7 @@ class _StepsFormHMState extends State<StepsFormHM> {
   String _selectedOptionGender = "Genero";
 
   String _selectedOptionDocument = "Dni";
-  String _selectedOptionmarital = "";
+  String _selectedOptionmarital = " ";
 
   List<Step> stepList() => [
         Step(

@@ -1,5 +1,5 @@
+import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
-
 import '../Login/login_page.dart';
 
 class UserList extends StatefulWidget {
@@ -15,6 +15,7 @@ class User {
 }
 
 class _UserListState extends State<UserList> {
+  TextEditingController textController = TextEditingController();
   late List<User> users;
   @override
   void initState() {
@@ -41,10 +42,10 @@ class _UserListState extends State<UserList> {
 
                   onPressed: () {
                     print(users.userName);
-                    Navigator.pop(context);
+                    Navigator.pushNamed(context, '/consulta');
                   },
                   child: const Text(
-                    'Volver',
+                    'Visualizar',
                     style: TextStyle(color: Colors.green),
                   ),
                 ),
@@ -133,6 +134,7 @@ class _UserListState extends State<UserList> {
           ],
         ),
       ),
+      
       appBar: AppBar(
         title: const Text('Pacientes'),
         actions: <Widget>[
@@ -142,9 +144,31 @@ class _UserListState extends State<UserList> {
       },)]
         
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) {
-          return ListTile(
+        body: Container(
+        // color: Colors.yellowAccent[100],
+        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          children: [
+            AnimSearchBar(
+              width: 400,
+              textController: textController,
+              onSuffixTap: () {
+                setState(() {
+                  textController.clear();
+                });
+              },
+              color: Colors.blue,
+              helpText: "Buscar",
+              autoFocus: true,
+              closeSearchOnSuffixTap: true,
+              animationDurationInMilli: 500,
+              rtl: true, onSubmitted: (String ) {  },
+            ),
+           Expanded(
+            child: ListView.builder(
+              itemBuilder: (context, index) {
+              return ListTile(
             onTap: () {
               _borrarUsuario(context, users[index]);
             },
@@ -157,6 +181,12 @@ class _UserListState extends State<UserList> {
           );
         },
         itemCount: users.length,
+      ),
+            ),
+            
+          ],
+        ),
+        
       ),
     );
   }

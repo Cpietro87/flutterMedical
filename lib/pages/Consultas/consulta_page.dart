@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:file_picker/file_picker.dart';
 
 class Vista extends StatelessWidget {
   const Vista({Key? key});
@@ -15,7 +16,6 @@ class Vista extends StatelessWidget {
               height: 80,
               decoration: const BoxDecoration(
                 color: Colors.blue,
-                
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(40),
                   bottomRight: Radius.circular(20),
@@ -148,17 +148,34 @@ class Vista extends StatelessWidget {
                                 textInputAction: TextInputAction.newline,
                               ),
                               const SizedBox(height: 20),
-                              SizedBox(
-                                  width: double.infinity,
-                                  child: Center(
-                                    child: ElevatedButton(
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
+                                children: [
+                                  ElevatedButton(
                                       onPressed: () {
-                                         Navigator.pushNamed(context, '/home');
+                                        Navigator.pushNamed(context, '/home');
                                         // lógica para enviar el texto del cuadro de texto
                                       },
                                       child: const Text('Enviar'),
                                     ),
-                                  ))
+                                    ElevatedButton(
+                                    onPressed: () async {
+                                      final result =
+                                          await FilePicker.platform.pickFiles(
+                                        type: FileType.custom,
+                                        allowedExtensions: ['pdf'],
+                                      );
+                                      if (result != null) {
+                                        // El usuario ha seleccionado un archivo
+                                        result.files.single
+                                            .path; //es la ruta del archivo seleccionado
+                                      }
+                                    },
+                                    child: const Text('UpLoad'),
+                                  )
+                                ],
+                              ),
+                             
                             ]),
                       ),
                     ],

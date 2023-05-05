@@ -184,11 +184,40 @@ class ProfileDoctor extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 16,),
-            Text(email),
-            const SizedBox(height: 16,),
-            Text(phone),
-            const SizedBox(height: 16),
+            SizedBox(
+              width: 350,
+              child: TextField(
+                  enabled: false,
+                  decoration: InputDecoration(
+                      icon: const Icon(Icons.email),
+                      filled: true,
+                      // fillColor: const Color(0xC52E9AFE),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black45, width: 5)),
+                      hintText: email)),
+            ),
+            const Padding(padding: EdgeInsets.only(top: 10)),
+            SizedBox(
+              width: 350,
+              child: TextField(
+                  enabled: false,
+                  decoration: InputDecoration(
+                      icon: const Icon(Icons.phone),
+                      filled: true,
+                      // fillColor: const Color(0xC52E9AFE),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      enabledBorder: const OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.black45, width: 5)),
+                      hintText: phone)),
+            ),
+            const Padding(padding: EdgeInsets.only(top: 10)),
             const Text(
               'Ultimos pacientes',
               style: TextStyle(
