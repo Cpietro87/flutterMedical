@@ -24,17 +24,17 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
+      
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           
-            Image.asset('images/iconoHistomed.jpg', 
+            Image.asset('images/iconoHistomed.png',
               width: 700.0,
               height: 350.0,),
           Container(
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                color: Colors.transparent, borderRadius: BorderRadius.circular(10)),
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
             child: TextField(
@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
            Container(
             decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(10)),
+                color: Colors.transparent, borderRadius: BorderRadius.circular(10)),
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
             child: TextField(
@@ -73,19 +73,29 @@ class _LoginPageState extends State<LoginPage> {
             
              style: TextButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0))),
+                          borderRadius: BorderRadius.circular(10.0)
+                          ),
+                          minimumSize: const Size(250, 50),
+                          fixedSize: Size(MediaQuery.of(context).size.width * 0.50, 50), 
+                          ),
             child: const Text("Entrar"),
                 ),
           TextButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/register');
               },
-              child: const Text("Crear cuenta"))
+              child: const Text("Crear cuenta",
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            )
+          )  
         ],
         
       ),
-      
-    );
+      );
+    
+    
   }
 
   void showSnackbar(String msg) {
