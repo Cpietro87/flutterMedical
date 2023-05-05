@@ -24,8 +24,17 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      body: Column(
+      body: Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("images/fondobg.jpg"),
+          //colorFilter: ColorFilter.mode(
+            //Colors.white54,
+             //BlendMode.lighten),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           
@@ -93,9 +102,8 @@ class _LoginPageState extends State<LoginPage> {
         ],
         
       ),
-      );
-    
-    
+      ),
+    );
   }
 
   void showSnackbar(String msg) {
