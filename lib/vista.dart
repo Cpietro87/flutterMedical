@@ -30,7 +30,7 @@ class Vista2 extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Center(
               child: Expanded(
                 child: Center(
@@ -63,11 +63,11 @@ class Vista2 extends StatelessWidget {
                     children: [
                       Container(
                         padding: const EdgeInsets.all(3),
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               'Datos del paciente:',
                               style: TextStyle(
                                 fontSize: 19,
@@ -142,7 +142,7 @@ class Vista2 extends StatelessWidget {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      Flexible(
+                                      const Flexible(
                                         fit: FlexFit.loose,
                                         child: Text(
                                           '12345678',
@@ -164,7 +164,7 @@ class Vista2 extends StatelessWidget {
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                      Flexible(
+                                      const Flexible(
                                         fit: FlexFit.loose,
                                         child: Text(
                                           'lucassaasd@example.com',
@@ -185,11 +185,11 @@ class Vista2 extends StatelessWidget {
                       ),
                       Container(
                         padding: const EdgeInsets.all(3),
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             SizedBox(
                               width: double.infinity,
                               child: Center(
@@ -198,13 +198,13 @@ class Vista2 extends StatelessWidget {
                                     // lógica para enviar el texto del cuadro de texto
                                   },
                                   style: ElevatedButton.styleFrom(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                         vertical: 16, horizontal: 32),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
                                     ),
                                   ),
-                                  child: Text(
+                                  child: const Text(
                                     'Upload',
                                     style: TextStyle(
                                       fontSize: 20,

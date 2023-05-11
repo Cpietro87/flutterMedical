@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -92,7 +91,7 @@ final headers = {"Content-Type": "application/json;charset=UTF-8"};
                   keyboardType: TextInputType.emailAddress,
                   controller: doctorId,
                   decoration: const InputDecoration(
-                      hintText: "Doctor", border: InputBorder.none),
+                      hintText: "Especialidad", border: InputBorder.none),
                 ),
               ),
               Container(

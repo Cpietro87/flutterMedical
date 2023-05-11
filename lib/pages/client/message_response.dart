@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 messageResponse(BuildContext context, String name) {
@@ -6,6 +5,6 @@ messageResponse(BuildContext context, String name) {
       context: context,
       builder: (_) => AlertDialog(
             // title: const Text("Mensaje Informativo...!"),
-            content: Text("El paciente " + name),
+            content: Text("El paciente $name"),
           ));
 }

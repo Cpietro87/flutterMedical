@@ -41,6 +41,7 @@ class _MyHome extends State<MyHome> {
               autoFocus: true,
               closeSearchOnSuffixTap: true,
               animationDurationInMilli: 500,
+              // ignore: avoid_types_as_parameter_names
               rtl: true, onSubmitted: (String ) {  },
             ),
   ],
@@ -109,12 +110,13 @@ class _MyHome extends State<MyHome> {
         context: context,
         builder: (_) => AlertDialog(
               title: const Text("Eliminar Paciente"),
-              content: Text("Esta seguro de eliminar a " + client.name + "?"),
+              // ignore: prefer_interpolation_to_compose_strings
+              content: Text("${"Esta seguro de eliminar a " + client.name}?"),
               actions: [
                 TextButton(
                   onPressed: () {
                     setState(() {
-                      this.clients.remove(client);
+                      clients.remove(client);
                       Navigator.pop(context);
                     });
                   },

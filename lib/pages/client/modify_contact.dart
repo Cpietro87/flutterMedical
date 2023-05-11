@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class ModifyContact extends StatefulWidget {
   final Client _client;
-  ModifyContact(this._client);
+  const ModifyContact(this._client, {super.key});
   @override
   State<StatefulWidget> createState() => _ModifyContact();
 }
