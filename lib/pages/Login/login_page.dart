@@ -13,8 +13,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //texfields
+  final nombre = TextEditingController();
   final email = TextEditingController();
-  final password = TextEditingController();
   //texfields
 
   //http
@@ -28,31 +28,32 @@ class _LoginPageState extends State<LoginPage> {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage("images/fondobg.jpg"),
-          //colorFilter: ColorFilter.mode(
-            //Colors.white54,
-             //BlendMode.lighten),
+          colorFilter: ColorFilter.mode(
+            Colors.white54,
+             BlendMode.lighten),
           fit: BoxFit.cover,
         ),
       ),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           
-            Image.asset('images/iconoHistomed.png',
-              width: 700.0,
-              height: 350.0,),
+          Image.asset('images/iconoHistomed.png',
+            width: 700.0,
+            height: 350.0,
+            ),
           Container(
             decoration: BoxDecoration(
                 color: Colors.transparent, borderRadius: BorderRadius.circular(10)),
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
             child: TextField(
-                controller: email,
+                controller: nombre,
                 enableInteractiveSelection: false,
                 decoration: InputDecoration(
-                    hintText: 'Email',
-                    labelText: 'Email',
-                    prefixIcon: const Icon(Icons.email),
+                    hintText: 'Nombre',
+                    labelText: 'Nombre',
+                    prefixIcon: const Icon(Icons.person),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0))),
                         
@@ -64,12 +65,12 @@ class _LoginPageState extends State<LoginPage> {
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
             child: TextField(
-                controller: password,
+                controller: email,
                 enableInteractiveSelection: false,
                 decoration: InputDecoration(
-                    hintText: 'Password',
-                    labelText: 'Password',
-                    prefixIcon: const Icon(Icons.password),
+                    hintText: 'Email',
+                    labelText: 'Email',
+                    prefixIcon: const Icon(Icons.supervised_user_circle),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0))),
                         
@@ -81,12 +82,12 @@ class _LoginPageState extends State<LoginPage> {
             },
             
              style: TextButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0)
-                          ),
-                          minimumSize: const Size(250, 50),
-                          fixedSize: Size(MediaQuery.of(context).size.width * 0.50, 50), 
-                          ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0)
+                ),
+                minimumSize: const Size(250, 50),
+                fixedSize: Size(MediaQuery.of(context).size.width * 0.50, 50), 
+                ),
             child: const Text("Entrar"),
                 ),
           TextButton(
@@ -95,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: const Text("Crear cuenta",
               style: TextStyle(
-                color: Colors.white,
+                color: Color.fromARGB(255, 41, 41, 41),
               ),
             )
           )  
@@ -112,12 +113,12 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> login() async {
-    if (email.text.isEmpty || password.text.isEmpty) {
+    if (email.text.isEmpty || nombre.text.isEmpty) {
       showSnackbar(
-          "${email.text.isEmpty ? "-Email " : ""} ${password.text.isEmpty ? "-Nombre" : ""} requerido");
+          "${email.text.isEmpty ? "-Email " : ""} ${nombre.text.isEmpty ? "-Nombre" : ""} requerido");
       return;
     }
-    final user = {"email": email.text, "password": password.text};
+    final user = {"email": email.text, "Nombre": nombre.text};
     final res = await http.post(url, headers: headers, body: jsonEncode(user));
     final data = Map.from(jsonDecode(res.body));
     if (res.statusCode == 400) {

@@ -25,8 +25,17 @@ final headers = {"Content-Type": "application/json;charset=UTF-8"};
   @override
    Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
+      body: Container(
+        decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("images/fondobg.jpg"),
+          colorFilter: ColorFilter.mode(
+            Colors.white54,
+             BlendMode.lighten),
+          fit: BoxFit.cover,
+          ),
+        ),
+        
           child: Column(
             children: [
               SizedBox(
@@ -96,15 +105,27 @@ final headers = {"Content-Type": "application/json;charset=UTF-8"};
                 ),
               ),
               
-              ElevatedButton(
-                 onPressed: () {
-                Navigator.pushNamed(context, '/');
-              },
-              child: const Text("Enviar"))
+              Padding(
+                padding: EdgeInsets.only(top: 20.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/');
+                  },
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)
+                    ),
+                    minimumSize: const Size(250, 50),
+                    fixedSize: Size(MediaQuery.of(context).size.width * 0.50, 50), 
+                  ),
+                  child: const Text("Enviar")
+                ),
+              )
             ],
-          ),
+          
         ),
       ),
+      
     );
   }
   Future<void> register() async {
