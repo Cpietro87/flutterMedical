@@ -13,8 +13,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   //texfields
-  final nombre = TextEditingController();
   final email = TextEditingController();
+  final password = TextEditingController();
   //texfields
 
   //http
@@ -48,12 +48,12 @@ class _LoginPageState extends State<LoginPage> {
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
             child: TextField(
-                controller: nombre,
+                controller: email,
                 enableInteractiveSelection: false,
                 decoration: InputDecoration(
-                    hintText: 'Nombre',
-                    labelText: 'Nombre',
-                    prefixIcon: const Icon(Icons.person),
+                    hintText: 'Email',
+                    labelText: 'Email',
+                    prefixIcon: const Icon(Icons.email),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0))),
                         
@@ -65,12 +65,13 @@ class _LoginPageState extends State<LoginPage> {
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(10),
             child: TextField(
-                controller: email,
+                obscureText: true,
+                controller: password,
                 enableInteractiveSelection: false,
                 decoration: InputDecoration(
-                    hintText: 'Email',
-                    labelText: 'Email',
-                    prefixIcon: const Icon(Icons.supervised_user_circle),
+                    hintText: 'password',
+                    labelText: 'password',
+                    prefixIcon: const Icon(Icons.password),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20.0))),
                         
@@ -113,12 +114,12 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> login() async {
-    if (email.text.isEmpty || nombre.text.isEmpty) {
+    if (email.text.isEmpty || email.text.isEmpty) {
       showSnackbar(
-          "${email.text.isEmpty ? "-Email " : ""} ${nombre.text.isEmpty ? "-Nombre" : ""} requerido");
+          "${email.text.isEmpty ? "-Email " : ""} ${email.text.isEmpty ? "-Email" : ""} requerido");
       return;
     }
-    final user = {"email": email.text, "Nombre": nombre.text};
+    final user = {"email": email.text, "Password": password.text};
     final res = await http.post(url, headers: headers, body: jsonEncode(user));
     final data = Map.from(jsonDecode(res.body));
     if (res.statusCode == 400) {
