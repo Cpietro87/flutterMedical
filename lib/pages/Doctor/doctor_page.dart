@@ -10,7 +10,14 @@ class ProfileDoctor extends StatelessWidget {
   final String photoUrl;
   final List<String> patients;
 
-  const ProfileDoctor({super.key, required this.name, required this.profession, required this.patients, required this.email, required this.phone, required this.photoUrl});
+  const ProfileDoctor(
+      {super.key,
+      required this.name,
+      required this.profession,
+      required this.patients,
+      required this.email,
+      required this.phone,
+      required this.photoUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -18,15 +25,15 @@ class ProfileDoctor extends StatelessWidget {
       bottomNavigationBar: const GNav(
         backgroundColor: Colors.black,
         haptic: true, // haptic feedback
-        tabBorderRadius: 15, 
+        tabBorderRadius: 15,
         curve: Curves.easeOutExpo, // tab animation curves
         duration: Duration(milliseconds: 900), // tab animation duration
-        gap: 8, // the tab button gap between icon and text 
+        gap: 8, // the tab button gap between icon and text
         color: Colors.white, // unselected icon color
         activeColor: Colors.white, // selected icon and text color
         iconSize: 24, // tab button icon size
         tabBackgroundColor: Colors.blue, // selected tab background color
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5), 
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         tabs: [
           GButton(
             icon: Icons.home,
@@ -34,17 +41,19 @@ class ProfileDoctor extends StatelessWidget {
           ),
           GButton(
             icon: Icons.supervised_user_circle,
-            text: 'favorite',),
+            text: 'favorite',
+          ),
           GButton(
             icon: Icons.search,
             text: 'search',
-            ),
+          ),
           GButton(
             icon: Icons.settings,
-            text: 'settings',),
+            text: 'settings',
+          ),
         ],
       ),
-       drawer: Drawer(
+      drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -131,7 +140,7 @@ class ProfileDoctor extends StatelessWidget {
           ),
         ],
       ),
-    body: SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             Container(
@@ -144,7 +153,6 @@ class ProfileDoctor extends StatelessWidget {
                     backgroundImage: NetworkImage(photoUrl),
                   ),
                   const SizedBox(width: 16),
-        
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,26 +168,26 @@ class ProfileDoctor extends StatelessWidget {
                       ],
                     ),
                   ),
-              TextButton(
-                onPressed: () {
-                Navigator.pushNamed(context, '/pacientes/list');
-              },
-              child: const Text("Citas"),
-                style: TextButton.styleFrom(
-                    backgroundColor: Colors.blue,
-                    foregroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0))
-                ),
-              
-              ),
-                        
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/pacientes/list');
+                    },
+                    child: const Text("Citas"),
+                    style: TextButton.styleFrom(
+                        backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0))),
+                  ),
                 ],
               ),
             ),
-            const SizedBox(height: 16,),
-            const Text('Informacion Personal',
-             style: TextStyle(
+            const SizedBox(
+              height: 16,
+            ),
+            const Text(
+              'Informacion Personal',
+              style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -240,9 +248,6 @@ class ProfileDoctor extends StatelessWidget {
           ],
         ),
       ),
-       
     );
   }
-
-
-  }
+}
