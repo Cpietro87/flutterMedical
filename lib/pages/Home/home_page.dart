@@ -17,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar:  GNav(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.black,
         haptic: true, // haptic feedback
         tabBorderRadius: 15, 
         curve: Curves.easeOutExpo, // tab animation curves
@@ -50,12 +50,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.pushNamed(context, '/pacientes/list');
               },
             ),
-          GButton(
-            icon: Icons.settings,
-            text: 'settings',
-            onPressed: () {
-                Navigator.pushNamed(context, '/pacientes/list');
-              },),
+          // GButton(
+          //   icon: Icons.settings,
+          //   text: 'settings',
+          //   onPressed: () {
+          //       Navigator.pushNamed(context, '/pacientes/list');
+          //     },),
         ],
       ),
        
@@ -75,10 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 const SizedBox(height: 50),
                 ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 30),
-                  title: Text('Hola Usuario!', style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: Colors.white
+                  title: Text('HistoMed', style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                      color: Colors.white,
+                      fontSize: 38,
                   )),
-                  subtitle: Text('Bienvenido!!!', style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  subtitle: Text('Bienvenido Usuario!!!', style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: Colors.white54
                   )),
                   trailing: const CircleAvatar(
@@ -93,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             color: Theme.of(context).primaryColor,
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
+              padding: const EdgeInsets.symmetric(vertical: 100),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -104,14 +105,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 2,
-                crossAxisSpacing: 40,
-                mainAxisSpacing: 30,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
                 children: [
                   itemDashboard('My Perfil', CupertinoIcons.person_circle, Colors.deepOrange,'/doctor'),
                   itemDashboard('Consulta', CupertinoIcons.graph_circle, Colors.green,'/consulta'),
                   itemDashboard('Pacientes', CupertinoIcons.person_2, Colors.purple,'/client'),
                   itemDashboard('Historia Clinica', CupertinoIcons.folder_open, Colors.brown,'/hclinica'),
-                  itemDashboard('Paciente Perfil', CupertinoIcons.doc, Colors.indigo,'/vista'),
+                  // itemDashboard('Paciente Perfil', CupertinoIcons.doc, Colors.indigo,'/vista'),
                   // itemDashboard('Upload', CupertinoIcons.add_circled, Colors.teal,'/search'),
                   // itemDashboard('Pdf', CupertinoIcons.add_circled, Colors.teal,'/pdf'),
                   // itemDashboard('About', CupertinoIcons.question_circle, Colors.blue,'/'),

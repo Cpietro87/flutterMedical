@@ -69,7 +69,6 @@ class ProfileDoctor extends StatelessWidget {
             ListTile(
               title: const Text('Home'),
               onTap: () {
-                print('Home');
                 Navigator.pop(context);
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                   return const LoginPage();
@@ -79,7 +78,6 @@ class ProfileDoctor extends StatelessWidget {
             ListTile(
               title: const Text('My Profile'),
               onTap: () {
-                print('My Profile');
                 Navigator.pop(context);
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                   return const LoginPage();
@@ -89,7 +87,6 @@ class ProfileDoctor extends StatelessWidget {
             ListTile(
               title: const Text('My Appointments'),
               onTap: () {
-                print('My Appointments');
                 Navigator.pop(context);
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                   return const LoginPage();
@@ -99,7 +96,6 @@ class ProfileDoctor extends StatelessWidget {
             ListTile(
               title: const Text('New Prescription'),
               onTap: () {
-                print('New Prescription');
                 Navigator.pop(context);
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                   return const LoginPage();
@@ -109,7 +105,6 @@ class ProfileDoctor extends StatelessWidget {
             ListTile(
               title: const Text('Available Times'),
               onTap: () {
-                print('Available Times');
                 Navigator.pop(context);
                 Navigator.of(context).push(MaterialPageRoute(builder: (_) {
                   return const LoginPage();
@@ -120,7 +115,7 @@ class ProfileDoctor extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        title: const Text('Perfil'),
+        title: const Text('My Perfil'),
         centerTitle: true,
         //automaticallyImplyLeading: false,
         elevation: 0.0,
@@ -133,7 +128,6 @@ class ProfileDoctor extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    print("Back Button Clicked");
                     Navigator.pop(context);
                   }),
             ],
