@@ -55,53 +55,58 @@ final headers = {"Content-Type": "application/json;charset=UTF-8"};
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(10)),
                 margin: const EdgeInsets.all(10),
                 padding: const EdgeInsets.all(10),
                 child: TextField(
                   controller: nombre,
-                  decoration: const InputDecoration(
-                      hintText: "Nombre", border: InputBorder.none),
-                ),
+                  decoration:  InputDecoration(
+                      hintText: "Nombre", 
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0))),
+                          ),
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(10)),
                 margin: const EdgeInsets.all(10),
                 padding: const EdgeInsets.all(10),
                 child: TextField(
                   keyboardType: TextInputType.emailAddress,
                   controller: email,
-                  decoration: const InputDecoration(
-                      hintText: "Email", border: InputBorder.none),
+                  decoration:  InputDecoration(
+                      hintText: "Email",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0))),
                 ),
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Colors.transparent,
                     borderRadius: BorderRadius.circular(10)),
                 margin: const EdgeInsets.all(10),
                 padding: const EdgeInsets.all(10),
                 child: TextField(
                   keyboardType: TextInputType.emailAddress,
                   controller: telefono,
-                  decoration: const InputDecoration(
-                      hintText: "Telefono", border: InputBorder.none),
+                  decoration: InputDecoration(
+                      hintText: "Telefono", border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0))),
                 ),
               ),
              Container(
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10)),
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.all(10),
+                color: Colors.transparent, borderRadius: BorderRadius.circular(10)),
+            margin: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
                 child: TextField(
                   keyboardType: TextInputType.emailAddress,
                   controller: doctorId,
-                  decoration: const InputDecoration(
-                      hintText: "Doctor", border: InputBorder.none),
+                  decoration: InputDecoration(
+                      hintText: "Doctor", border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20.0))),
                 ),
               ),
               

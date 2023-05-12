@@ -43,7 +43,8 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               decoration: BoxDecoration(
                   color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(10)),
+                  
+                borderRadius: BorderRadius.circular(10)),
               margin: const EdgeInsets.all(10),
               padding: const EdgeInsets.all(10),
               child: TextField(

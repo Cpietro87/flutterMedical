@@ -112,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   itemDashboard('Consulta', CupertinoIcons.graph_circle, Colors.green,'/consulta'),
                   itemDashboard('Pacientes', CupertinoIcons.person_2, Colors.purple,'/client'),
                   itemDashboard('Historia Clinica', CupertinoIcons.folder_open, Colors.brown,'/hclinica'),
-                  // itemDashboard('Paciente Perfil', CupertinoIcons.doc, Colors.indigo,'/vista'),
+                  itemDashboard('Paciente Perfil', CupertinoIcons.doc, Colors.indigo,'/vista'),
                   // itemDashboard('Upload', CupertinoIcons.add_circled, Colors.teal,'/search'),
                   // itemDashboard('Pdf', CupertinoIcons.add_circled, Colors.teal,'/pdf'),
                   // itemDashboard('About', CupertinoIcons.question_circle, Colors.blue,'/'),
