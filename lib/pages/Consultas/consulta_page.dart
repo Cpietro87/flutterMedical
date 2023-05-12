@@ -8,30 +8,30 @@ class Vista extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> listName = ['opcion 1', 'opcion 2', 'opcion 3', 'opcion 4'];
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Consulta'),
+        centerTitle: true,
+        //automaticallyImplyLeading: false,
+        elevation: 0.0,
+        actions: [
+          Row(
+            children: [
+              IconButton(
+                  icon: const Icon(
+                    Icons.cancel_rounded,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
+            ],
+          ),
+        ],
+      ),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: 80,
-              decoration: const BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(20),
-                ),
-              ),
-              child: const Center(
-                child: Text(
-                  'Consulta médica',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
             Expanded(
               child: Center(
                 child: Padding(
@@ -149,16 +149,23 @@ class Vista extends StatelessWidget {
                               ),
                               const SizedBox(height: 20),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: [
                                   ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pushNamed(context, '/home');
-                                        // lógica para enviar el texto del cuadro de texto
-                                      },
-                                      child: const Text('Enviar'),
+                                    onPressed: () {
+                                      Navigator.pushNamed(context, '/home');
+                                      // lógica para enviar el texto del cuadro de texto
+                                    },
+                                    child: const Text('Enviar'),
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            10), // Cambia el valor del radio aquí
+                                      ),
                                     ),
-                                    ElevatedButton(
+                                  ),
+                                  ElevatedButton(
                                     onPressed: () async {
                                       final result =
                                           await FilePicker.platform.pickFiles(
@@ -171,11 +178,16 @@ class Vista extends StatelessWidget {
                                             .path; //es la ruta del archivo seleccionado
                                       }
                                     },
-                                    child: const Text('UpLoad'),
+                                    child: const Text('Cargar'),
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            10), // Cambia el valor del radio aquí
+                                      ),
+                                    ),
                                   )
                                 ],
                               ),
-                             
                             ]),
                       ),
                     ],
