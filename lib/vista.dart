@@ -1,3 +1,4 @@
+import 'package:doctor/pages/Paciente/paciente_page.dart';
 import 'package:flutter/material.dart';
 
 class Vista2 extends StatelessWidget {
@@ -61,6 +62,11 @@ class Vista2 extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child:rowChip(context),
+                      ),
+                      const SizedBox(height: 10),
                       Container(
                         padding: const EdgeInsets.all(3),
                         decoration: const BoxDecoration(),
@@ -226,4 +232,73 @@ class Vista2 extends StatelessWidget {
       ),
     );
   }
+}
+
+rowChip(BuildContext context) {
+  return Row(children: <Widget>[
+    
+     GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const StepsFormHM()),
+        );
+      },
+      child: ChipForRow('Healt', Color(0xFFff8a65)),
+    ),
+     GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const StepsFormHM()),
+        );
+      },
+      child: ChipForRow('Food', Color(0xFF4fc3f7)),
+    ),
+     GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const StepsFormHM()),
+        );
+      },
+      child: ChipForRow('LifeStyle', Color(0xFF9575cd)),
+    ),
+    GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const StepsFormHM()),
+        );
+      },
+      child: ChipForRow('Sport', Color(0xFF4db6ac)),
+    ),
+     GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const StepsFormHM()),
+        );
+      },
+      child: ChipForRow('Nature', Color(0xFF5cda65)),
+    ),
+  ]);
+}
+
+Widget ChipForRow(String label, Color color) {
+  return Chip(
+    labelPadding: EdgeInsets.all(0.5),
+    avatar: CircleAvatar(
+      backgroundColor: Colors.grey.shade600,
+      child: Text(label[0].toUpperCase()),
+    ),
+    label: Text(
+      label,
+      style: TextStyle(color: Colors.white),
+    ),
+    backgroundColor: color,
+    elevation: 6.0,
+    shadowColor: Colors.grey[60],
+    padding: EdgeInsets.all(5.0),
+  );
 }
