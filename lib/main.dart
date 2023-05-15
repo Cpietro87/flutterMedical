@@ -51,5 +51,4 @@ Map<String, WidgetBuilder> routes = {
   '/search': (context) => const SearchBar(),
   '/client': (context) => const MyHome("Pacientes"),
   '/vista': (context) => const Vista2(),
-
 };
