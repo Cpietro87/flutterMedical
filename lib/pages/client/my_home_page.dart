@@ -5,7 +5,6 @@ import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 
 class MyHome extends StatefulWidget {
-  
   final String _title;
   const MyHome(this._title, {super.key});
 
@@ -27,28 +26,26 @@ class _MyHome extends State<MyHome> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget._title),
-      actions: [
-      AnimSearchBar(
-              width: 400,
-              textController: textController,
-              onSuffixTap: () {
-                setState(() {
-                  textController.clear();
-                });
-              },
-              color: Colors.blue,
-              helpText: "Buscar",
-              autoFocus: true,
-              closeSearchOnSuffixTap: true,
-              animationDurationInMilli: 500,
-              // ignore: avoid_types_as_parameter_names
-              rtl: true, onSubmitted: (String ) {  },
-            ),
-  ],
+        actions: [
+          AnimSearchBar(
+            width: 400,
+            textController: textController,
+            onSuffixTap: () {
+              setState(() {
+                textController.clear();
+              });
+            },
+            color: Colors.blue,
+            helpText: "Buscar",
+            autoFocus: true,
+            closeSearchOnSuffixTap: true,
+            animationDurationInMilli: 500,
+            // ignore: avoid_types_as_parameter_names
+            rtl: true, onSubmitted: (String) {},
+          ),
+        ],
       ),
-      
       body: ListView.builder(
-      
         itemCount: clients.length,
         itemBuilder: (context, index) {
           return ListTile(

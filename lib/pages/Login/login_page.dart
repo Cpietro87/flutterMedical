@@ -65,7 +65,8 @@ class _LoginPageState extends State<LoginPage> {
               margin: const EdgeInsets.all(10),
               padding: const EdgeInsets.all(10),
               child: TextField(
-                controller: email,
+                obscureText: true,
+                controller: password,
                 enableInteractiveSelection: false,
                 decoration: InputDecoration(
                     hintText: 'password',
@@ -109,9 +110,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> login() async {
-    if (email.text.isEmpty || email.text.isEmpty) {
+    if (email.text.isEmpty || password.text.isEmpty) {
       showSnackbar(
-          "${email.text.isEmpty ? "-Email " : ""} ${email.text.isEmpty ? "-Email" : ""} requerido");
+          "${email.text.isEmpty ? "-Email " : ""} ${password.text.isEmpty ? "-Email" : ""} requerido");
       return;
     }
     final user = {"email": email.text, "Password": password.text};

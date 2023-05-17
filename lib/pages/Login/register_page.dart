@@ -10,8 +10,6 @@ class Register extends StatefulWidget {
   State<Register> createState() => _RegisterState();
 }
 
-
-
 class _RegisterState extends State<Register> {
   final nombre = TextEditingController();
   final email = TextEditingController();
@@ -21,120 +19,98 @@ class _RegisterState extends State<Register> {
 
   final url = Uri.parse("http://localhost:3000/paciente/create");
 
-final headers = {"Content-Type": "application/json;charset=UTF-8"};
+  final headers = {"Content-Type": "application/json;charset=UTF-8"};
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("images/fondobg.jpg"),
-          colorFilter: ColorFilter.mode(
-            Colors.white54,
-             BlendMode.lighten),
-          fit: BoxFit.cover,
+          image: DecorationImage(
+            image: AssetImage("images/fondobg.jpg"),
+            colorFilter: ColorFilter.mode(Colors.white54, BlendMode.lighten),
+            fit: BoxFit.cover,
           ),
         ),
-        
-          child: Column(
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.05,
+        child: Column(
+          children: [
+            Image.asset(
+              'images/iconoHistomed.png',
+              width: 600.0,
+              height: 250.0,
+            ),
+            const Text(
+              "Registrarse",
+              style: TextStyle(fontSize: 20, color: Colors.grey),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                controller: nombre,
+                decoration: const InputDecoration(
+                    hintText: "Nombre", border: InputBorder.none),
               ),
-              Text(
-                "Usuario",
-                style: TextStyle(
-                    fontSize: 50, color: Theme.of(context).primaryColor),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                keyboardType: TextInputType.emailAddress,
+                controller: email,
+                decoration: const InputDecoration(
+                    hintText: "Email", border: InputBorder.none),
               ),
-              const Text(
-                "Registro",
-                style: TextStyle(fontSize: 20, color: Colors.grey),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                keyboardType: TextInputType.emailAddress,
+                controller: telefono,
+                decoration: const InputDecoration(
+                    hintText: "Telefono", border: InputBorder.none),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.10,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(10)),
+              margin: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                keyboardType: TextInputType.emailAddress,
+                controller: doctorId,
+                decoration: const InputDecoration(
+                    hintText: "Especialidad", border: InputBorder.none),
               ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(10)),
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  controller: nombre,
-                  decoration:  InputDecoration(
-                      hintText: "Nombre", 
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
-                          ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(10)),
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  controller: email,
-                  decoration:  InputDecoration(
-                      hintText: "Email",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
-                ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(10)),
-                margin: const EdgeInsets.all(10),
-                padding: const EdgeInsets.all(10),
-                child: TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  controller: telefono,
-                  decoration: InputDecoration(
-                      hintText: "Telefono", border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
-                ),
-              ),
-             Container(
-                decoration: BoxDecoration(
-                color: Colors.transparent, borderRadius: BorderRadius.circular(10)),
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
-                child: TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  controller: doctorId,
-                  decoration: InputDecoration(
-                      hintText: "Doctor", border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0))),
-                ),
-              ),
-              
-              Padding(
-                padding: EdgeInsets.only(top: 20.0),
-                child: ElevatedButton(
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 20.0),
+              child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/');
                   },
                   style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0)
-                    ),
+                        borderRadius: BorderRadius.circular(10.0)),
                     minimumSize: const Size(250, 50),
-                    fixedSize: Size(MediaQuery.of(context).size.width * 0.50, 50), 
+                    fixedSize:
+                        Size(MediaQuery.of(context).size.width * 0.50, 50),
                   ),
-                  child: const Text("Enviar")
-                ),
-              )
-            ],
-          
+                  child: const Text("Enviar")),
+            )
+          ],
         ),
       ),
-      
     );
   }
-  Future<void> register() async {
 
+  Future<void> register() async {
     final usuarios = {
       "nombre": nombre.text,
       "email": email.text,
@@ -142,7 +118,8 @@ final headers = {"Content-Type": "application/json;charset=UTF-8"};
       "doctorId": doctorId.text,
       "obrasocial": obrasocial.text
     };
-    final res = await http.post(url, headers: headers, body: jsonEncode(usuarios));
+    final res =
+        await http.post(url, headers: headers, body: jsonEncode(usuarios));
 
     if (res.statusCode == 401) {
       final data = Map.from((jsonDecode(res.body)));
@@ -154,7 +131,6 @@ final headers = {"Content-Type": "application/json;charset=UTF-8"};
       showSnackBar("Ups hubo un error, intente de nuevo");
       return;
     }
-  
   }
 
   void showSnackBar(String msg) {
