@@ -206,7 +206,7 @@ class Vista2 extends StatelessWidget {
                                     ),
                                   ),
                                   child: const Text(
-                                    'Upload',
+                                    'Subir',
                                     style: TextStyle(
                                       fontSize: 20,
                                     ),
