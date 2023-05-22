@@ -116,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Colors.brown, '/hclinica'),
                   itemDashboard('Paciente Perfil', CupertinoIcons.doc,
                       Colors.indigo, '/vista'),
-                  // itemDashboard('Upload', CupertinoIcons.add_circled, Colors.teal,'/search'),
+                  itemDashboard('Prueba Back', CupertinoIcons.add_circled, Colors.teal,'/back'),
                   // itemDashboard('Pdf', CupertinoIcons.add_circled, Colors.teal,'/pdf'),
                   // itemDashboard('About', CupertinoIcons.question_circle, Colors.blue,'/'),
                   // itemDashboard('Contact', CupertinoIcons.phone, Colors.pinkAccent,'/'),

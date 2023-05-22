@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,11 +13,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   //texfields
   final email = TextEditingController();
-  final password = TextEditingController();
+  final telefono = TextEditingController();
   //texfields
 
   //http
-  final url = Uri.parse("http://localhost:3000/paciente/index");
+  final url = Uri.parse("http://localhost:3000/paciente/login");
   final headers = {"Content-Type": "application/json;charset=UTF-8"};
   //http
   @override
@@ -43,8 +42,7 @@ class _LoginPageState extends State<LoginPage> {
             Container(
               decoration: BoxDecoration(
                   color: Colors.transparent,
-                  
-                borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(10)),
               margin: const EdgeInsets.all(10),
               padding: const EdgeInsets.all(10),
               child: TextField(
@@ -66,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.all(10),
               child: TextField(
                 obscureText: true,
-                controller: password,
+                controller: telefono,
                 enableInteractiveSelection: false,
                 decoration: InputDecoration(
                     hintText: 'password',
@@ -78,6 +76,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             ElevatedButton(
               onPressed: () {
+                login();
                 Navigator.pushNamed(context, '/home');
               },
               style: TextButton.styleFrom(
@@ -110,20 +109,23 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> login() async {
-    if (email.text.isEmpty || password.text.isEmpty) {
+    if (email.text.isEmpty || telefono.text.isEmpty) {
       showSnackbar(
-          "${email.text.isEmpty ? "-Email " : ""} ${password.text.isEmpty ? "-Email" : ""} requerido");
+          "${email.text.isEmpty ? "Email " : ""} ${telefono.text.isEmpty ? "Password" : ""} requerido");
       return;
     }
-    final user = {"email": email.text, "Password": password.text};
+    final user = {"email": email.text, "Password": telefono.text};
     final res = await http.post(url, headers: headers, body: jsonEncode(user));
     final data = Map.from(jsonDecode(res.body));
     if (res.statusCode == 400) {
       showSnackbar(data["error"]);
       return;
     }
-    if (res.statusCode != 200) {
-      showSnackbar("Ups ha habido un error");
+
+    if (res.statusCode == 200) {
+      showSnackbar("Login");
+    } else {
+      showSnackbar("el email no esta registardo");
     }
   }
 }

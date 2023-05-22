@@ -164,7 +164,7 @@ class ProfileDoctor extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/pacientes/list');
+                      Navigator.pushNamed(context, '/client');
                     },
                     child: const Text("Citas"),
                     style: TextButton.styleFrom(

@@ -1,10 +1,10 @@
-class Usuario {
+class Paciente {
   String nombre;
   String email;
   String telefono;
   String doctorId;
   String obrasocial;
-  Usuario(
+  Paciente(
       {
       required this.nombre,
       required this.email,
@@ -13,8 +13,8 @@ class Usuario {
       required this.obrasocial,
       });
 
-  factory Usuario.fromJson(Map json) {
-    return Usuario(
+  factory Paciente.fromJson(Map json) {
+    return Paciente(
         nombre: json["nombre"],
         email: json["email"],
         telefono: json["telefono"],
