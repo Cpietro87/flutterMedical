@@ -177,6 +177,13 @@ class Vista2 extends StatelessWidget {
                                       ),
                                     ],
                                   ),
+                                  SizedBox(height: 10),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      // Aquí puedes agregar la lógica para modificar los datos del paciente
+                                    },
+                                    child: Text('Modificar'),
+                                  ),
                                 ],
                               ),
                               // Limitar el ancho máximo del Container
