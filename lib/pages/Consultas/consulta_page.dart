@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class Vista extends StatelessWidget {
   const Vista({Key? key});
@@ -8,6 +9,43 @@ class Vista extends StatelessWidget {
   Widget build(BuildContext context) {
     List<String> listName = ['opcion 1', 'opcion 2', 'opcion 3', 'opcion 4'];
     return Scaffold(
+       bottomNavigationBar: GNav(
+        backgroundColor: Colors.black,
+        haptic: true, // haptic feedback
+        tabBorderRadius: 15,
+        curve: Curves.easeOutExpo, // tab animation curves
+        duration: const Duration(milliseconds: 900), // tab animation duration
+        gap: 8, // the tab button gap between icon and text
+        color: Colors.white, // unselected icon color
+        activeColor: Colors.white, // selected icon and text color
+        iconSize: 24, // tab button icon size
+        tabBackgroundColor: Colors.blue, // selected tab background color
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        tabs: [
+          GButton(
+            icon: Icons.home,
+            text: 'Home',
+            onPressed: () {
+              Navigator.pushNamed(context, '/home');
+            },
+          ),
+          GButton(
+            icon: Icons.supervised_user_circle_outlined,
+            text: 'favorite',
+            onPressed: () {
+              Navigator.pushNamed(context, '/doctor');
+            },
+          ),
+          GButton(
+            icon: Icons.search,
+            text: 'search',
+            onPressed: () {
+              Navigator.pushNamed(context, '/pacientes/list');
+            },
+          ),
+         
+        ],
+      ),
       appBar: AppBar(
         title: const Text('Consulta'),
         centerTitle: true,
@@ -69,7 +107,7 @@ class Vista extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                          height: 50), // Agregar un espacio vertical de 20s
+                          height: 50), 
                       const Text(
                         'Motivo de la consulta',
                         style: TextStyle(

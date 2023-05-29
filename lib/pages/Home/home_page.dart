@@ -48,12 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Navigator.pushNamed(context, '/pacientes/list');
             },
           ),
-          // GButton(
-          //   icon: Icons.settings,
-          //   text: 'settings',
-          //   onPressed: () {
-          //       Navigator.pushNamed(context, '/pacientes/list');
-          //     },),
+         
         ],
       ),
       body: ListView(
@@ -116,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Colors.brown, '/hclinica'),
                   itemDashboard('Paciente Perfil', CupertinoIcons.doc,
                       Colors.indigo, '/vista'),
-                  itemDashboard('Prueba Back', CupertinoIcons.add_circled, Colors.teal,'/back'),
+                  // itemDashboard('Prueba Back', CupertinoIcons.add_circled, Colors.teal,'/back'),
                   // itemDashboard('Pdf', CupertinoIcons.add_circled, Colors.teal,'/pdf'),
                   // itemDashboard('About', CupertinoIcons.question_circle, Colors.blue,'/'),
                   // itemDashboard('Contact', CupertinoIcons.phone, Colors.pinkAccent,'/'),

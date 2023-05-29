@@ -22,98 +22,44 @@ class ProfileDoctor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const GNav(
+      bottomNavigationBar: GNav(
         backgroundColor: Colors.black,
         haptic: true, // haptic feedback
         tabBorderRadius: 15,
         curve: Curves.easeOutExpo, // tab animation curves
-        duration: Duration(milliseconds: 900), // tab animation duration
+        duration: const Duration(milliseconds: 900), // tab animation duration
         gap: 8, // the tab button gap between icon and text
         color: Colors.white, // unselected icon color
         activeColor: Colors.white, // selected icon and text color
         iconSize: 24, // tab button icon size
         tabBackgroundColor: Colors.blue, // selected tab background color
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         tabs: [
           GButton(
             icon: Icons.home,
             text: 'Home',
+            onPressed: () {
+              Navigator.pushNamed(context, '/home');
+            },
           ),
           GButton(
-            icon: Icons.supervised_user_circle,
+            icon: Icons.supervised_user_circle_outlined,
             text: 'favorite',
+            onPressed: () {
+              Navigator.pushNamed(context, '/doctor');
+            },
           ),
           GButton(
             icon: Icons.search,
             text: 'search',
+            onPressed: () {
+              Navigator.pushNamed(context, '/pacientes/list');
+            },
           ),
-          GButton(
-            icon: Icons.settings,
-            text: 'settings',
-          ),
+         
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.blue,
-              ),
-              child: Text(
-                'Hola Doctor',
-                style: TextStyle(color: Colors.white, fontSize: 18.0),
-              ),
-            ),
-            ListTile(
-              title: const Text('Home'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                  return const LoginPage();
-                }));
-              },
-            ),
-            ListTile(
-              title: const Text('My Profile'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                  return const LoginPage();
-                }));
-              },
-            ),
-            ListTile(
-              title: const Text('My Appointments'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                  return const LoginPage();
-                }));
-              },
-            ),
-            ListTile(
-              title: const Text('New Prescription'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                  return const LoginPage();
-                }));
-              },
-            ),
-            ListTile(
-              title: const Text('Available Times'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.of(context).push(MaterialPageRoute(builder: (_) {
-                  return const LoginPage();
-                }));
-              },
-            ),
-          ],
-        ),
-      ),
+     
       appBar: AppBar(
         title: const Text('My Perfil'),
         centerTitle: true,

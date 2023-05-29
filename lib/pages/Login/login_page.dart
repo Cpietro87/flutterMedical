@@ -77,7 +77,6 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               onPressed: () {
                 login();
-                Navigator.pushNamed(context, '/home');
               },
               style: TextButton.styleFrom(
                 shape: RoundedRectangleBorder(
@@ -123,9 +122,11 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     if (res.statusCode == 200) {
+      Navigator.pushNamed(context, '/');
       showSnackbar("Login");
     } else {
       showSnackbar("el email no esta registardo");
+      Navigator.pushNamed(context, '/home');
     }
   }
 }

@@ -1,5 +1,5 @@
-import 'package:doctor/pages/client/my_home_page.dart';
-import 'package:doctor/pages/client/text_box.dart';
+import 'package:doctor/pages/Pacientes/my_home_page.dart';
+import 'package:doctor/pages/Pacientes/text_box.dart';
 import 'package:flutter/material.dart';
 
 class RegisterContact extends StatefulWidget {

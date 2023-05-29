@@ -1,5 +1,5 @@
-import 'package:doctor/pages/Paciente/paciente_page.dart';
-import 'package:doctor/pages/client/my_home_page.dart';
+import 'package:doctor/pages/Hclinica/hclinica_page.dart';
+import 'package:doctor/pages/Pacientes/my_home_page.dart';
 import 'package:flutter/material.dart';
 
 class Vista2 extends StatelessWidget {
@@ -86,7 +86,6 @@ class Vista2 extends StatelessWidget {
                                 ),
                               ),
                               padding: const EdgeInsets.all(20),
-
                               child: Column(
                                 children: [
                                   Row(
@@ -236,10 +235,10 @@ class Vista2 extends StatelessWidget {
     );
   }
 }
-rowChip(BuildContext context) {
+
+Widget rowChip(BuildContext context) {
   return Row(children: <Widget>[
-    
-     GestureDetector(
+    GestureDetector(
       onTap: () {
         Navigator.push(
           context,
@@ -248,7 +247,7 @@ rowChip(BuildContext context) {
       },
       child: ChipForRow('Healt', Color(0xFFff8a65)),
     ),
-     GestureDetector(
+    GestureDetector(
       onTap: () {
         Navigator.push(
           context,
@@ -257,7 +256,7 @@ rowChip(BuildContext context) {
       },
       child: ChipForRow('Food', Color(0xFF4fc3f7)),
     ),
-     GestureDetector(
+    GestureDetector(
       onTap: () {
         Navigator.push(
           context,
@@ -275,7 +274,7 @@ rowChip(BuildContext context) {
       },
       child: ChipForRow('Sport', Color(0xFF4db6ac)),
     ),
-     GestureDetector(
+    GestureDetector(
       onTap: () {
         Navigator.push(
           context,

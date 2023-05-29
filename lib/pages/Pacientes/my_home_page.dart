@@ -1,8 +1,9 @@
-import 'package:doctor/pages/client/message_response.dart';
-import 'package:doctor/pages/client/modify_contact.dart';
-import 'package:doctor/pages/client/register_contact.dart';
+import 'package:doctor/pages/Pacientes/message_response.dart';
+import 'package:doctor/pages/Pacientes/modify_contact.dart';
+import 'package:doctor/pages/Pacientes/register_contact.dart';
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class MyHome extends StatefulWidget {
   final String _title;
@@ -24,6 +25,43 @@ class _MyHome extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: GNav(
+        backgroundColor: Colors.black,
+        haptic: true, // haptic feedback
+        tabBorderRadius: 15,
+        curve: Curves.easeOutExpo, // tab animation curves
+        duration: const Duration(milliseconds: 900), // tab animation duration
+        gap: 8, // the tab button gap between icon and text
+        color: Colors.white, // unselected icon color
+        activeColor: Colors.white, // selected icon and text color
+        iconSize: 24, // tab button icon size
+        tabBackgroundColor: Colors.blue, // selected tab background color
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        tabs: [
+          GButton(
+            icon: Icons.home,
+            text: 'Home',
+            onPressed: () {
+              Navigator.pushNamed(context, '/home');
+            },
+          ),
+          GButton(
+            icon: Icons.supervised_user_circle_outlined,
+            text: 'favorite',
+            onPressed: () {
+              Navigator.pushNamed(context, '/doctor');
+            },
+          ),
+          GButton(
+            icon: Icons.search,
+            text: 'search',
+            onPressed: () {
+              Navigator.pushNamed(context, '/pacientes/list');
+            },
+          ),
+         
+        ],
+      ),
       appBar: AppBar(
         title: Text(widget._title),
         actions: [
